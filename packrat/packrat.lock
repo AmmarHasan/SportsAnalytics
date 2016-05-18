@@ -1,0 +1,58 @@
+PackratFormat: 1.4
+PackratVersion: 0.4.7
+RVersion: 3.2.4
+Repos: CRAN=https://cran.rstudio.com/,
+    CRANextra=http://www.stats.ox.ac.uk/pub/RWin
+
+Package: R6
+Source: CRAN
+Version: 2.1.2
+Hash: c515e41c73294952cbb33ee1c1be5a2d
+
+Package: Rcpp
+Source: CRAN
+Version: 0.12.4
+Hash: 115167d29098a4fd1e572fdbef809438
+
+Package: digest
+Source: CRAN
+Version: 0.6.9
+Hash: fd55d5a024f160fc001a5ece1e27782d
+
+Package: htmltools
+Source: CRAN
+Version: 0.3.5
+Hash: 56b2a44852ab64c3dd8ef05f725b0079
+Requires: Rcpp, digest
+
+Package: httpuv
+Source: CRAN
+Version: 1.3.3
+Hash: 9c0fcc725400dab7f86c247bf3fc9d0f
+Requires: Rcpp
+
+Package: jsonlite
+Source: CRAN
+Version: 0.9.19
+Hash: 4a983f753b6e88ae0f5a6ac152d8cc32
+
+Package: mime
+Source: CRAN
+Version: 0.4
+Hash: b08c52dae92a0a11e64a4deea032ec33
+
+Package: packrat
+Source: CRAN
+Version: 0.4.7
+Hash: a4114476a371801bc2c567d8da71a29c
+
+Package: shiny
+Source: CRAN
+Version: 0.13.1
+Hash: a4c82c31676563094608d7b5b6495088
+Requires: R6, digest, htmltools, httpuv, jsonlite, mime, xtable
+
+Package: xtable
+Source: CRAN
+Version: 1.8-2
+Hash: 7293235cfcc14cdff1ce7fd1a0212031
