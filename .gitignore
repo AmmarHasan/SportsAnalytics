@@ -1,3 +1,5 @@
+casperjs/node_modules/*
+
 packrat/lib*/
 .Rproj.user
 # History files

@@ -4,7 +4,7 @@ soccer<-read.csv("data//Premier League 2011-12 Match by Match.csv",header =T,sep
 
 
 soccer %>%
-  mutate(Player.Name = paste(Player.Surname , Player.Forename , sep=" ") )%>%
+  mutate(Player.Name = paste(Player.Forename , Player.Surname , sep=" ") )%>%
   select_("Date","Position.Id","Player.ID","Player.Name","Team","Opposition","Venue",
           "Time.Played","Goals","Shots.On.Target.inc.goals","Shots.Off.Target.inc.woodwork",
           "Blocked.Shots","Total.Successful.Passes.All","Total.Unsuccessful.Passes.All","Assists",
