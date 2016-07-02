@@ -1,11 +1,12 @@
 var casper = require('casper').create({
-    // clientScripts: [
     //     'includes/jquery2.2.4.js'      // This script will be injected in remote DOM on every request
-    // ],
-    // pageSettings: {
-    //     loadImages: false,        // The WebPage instance used by Casper will
-    //     loadPlugins: false         // use these settings
-    // },
+    clientScripts: [
+        'includes/casperjs-options.js'
+    ],
+    pageSettings: {
+        loadImages: false,        // The WebPage instance used by Casper will
+        loadPlugins: false         // use these settings
+    },
     logLevel: "debug",              // Only "info" level messages will be logged
     verbose: true                  // log messages will be printed out to the console
 });
@@ -13,17 +14,9 @@ var fs = require('fs');
 
 var playerStatisticLinks = fs.read('playerStatisticLinks.json');
 playerStatisticLinks = JSON.parse(playerStatisticLinks);
-// playerStatisticLinks = playerStatisticLinks.slice(0, 3);
+// playerStatisticLinks = playerStatisticLinks.slice(309, 380);
 var playerStatisticLinksError = [];
 var matches = [];
-/*  [
-        {
-            home: "Blackburn",
-            away: "Wolverhampton Wanderers",
-            homePlayersData: [{name:"Paul Robinson",rating:6.91,passAccuracy:39.1},{name:"Míchel Salgado",rating:6.10,passAccuracy:76.1}],
-            awayPlayersData: [{name:"Wayne Hennessey",rating:6.74,passAccuracy:55.8},{name:"Richard Stearman",rating:6.46,passAccuracy:66.7}],
-        },
-    ]  */
 
 function getHomeAway() {
     var teams = document.querySelectorAll('a.team-link');
@@ -48,6 +41,34 @@ function getTables() {
 
 var iter = -1;
 
+casper.on('resource.request', function (requestData, networkRequest) {
+    // your filter url or ... then
+    if(requestData.url.indexOf('www.whoscored.com/Matches/')<0)
+    var skip = [
+        'googleads.g.doubleclick.net',
+        'cm.g.doubleclick.net',
+        'www.googleadservices.com',
+        'about:blank',
+        'cm.g.doubleclick.net/push',
+        'idsync.rlcdn.com',
+        'sync.mathtag.com/sync',
+        'image2.pubmatic.com',
+        'cm.send.microad',
+        'ib.adnxs.com',
+        'https://fqtag.com/',
+        'tpc.googlesyndication.com/',
+        'ib.adnxs.com',
+        'ads.pubmatic.com',
+        'googleads.g.doubleclick.net/',
+        'staticxx.facebook.com/connect/xd_arbiter.php'
+    ];
+    skip.forEach(function (needle) {
+        if (requestData.url.indexOf(needle) > 0) {
+            networkRequest.abort();
+        }
+    });
+});
+
 casper.start().then(function () {
     this.each(playerStatisticLinks, function () {
         iter++; // change the link being opened (has to be here specifically)
@@ -56,7 +77,7 @@ casper.start().then(function () {
             var homeAway = this.evaluate(getHomeAway);
 
             if (homeAway === null || homeAway === undefined) {
-                playerStatisticLinksError.push(playerStatisticLinks[i]);
+                // playerStatisticLinksError.push(playerStatisticLinks[iter]);
             }
             else {
                 var PlayersData = this.evaluate(getTables);
@@ -73,33 +94,9 @@ casper.start().then(function () {
         });
     });
 });
-// casper.start().each(playerStatisticLinks, function (self, link) {
-//     self.thenOpen(link, function () {
-//         var homeAway = this.evaluate(getHomeAway);
-
-//         if (homeAway === null || homeAway === undefined) {
-//             playerStatisticLinksError.push(link);
-//         }
-//         else {
-//             var PlayersData = this.evaluate(getTables);
-//             var match = {
-//                 home: homeAway[0],
-//                 away: homeAway[1],
-//                 homePlayersData: PlayersData.homePlayersData,
-//                 awayPlayersData: PlayersData.awayPlayersData
-//             };
-
-//             // this.echo(JSON.stringify(match));
-//             this.echo(match.home + " - " + match.away);
-//             matches.push(match);
-//         }
-
-//     });
-// });
-
 casper.run(function () {
     console.log(matches);
-    fs.write('playersData.json', JSON.stringify(matches), 'w');
-    fs.write('playerStatisticLinksError.json', JSON.stringify(playerStatisticLinksError), 'w');
+    fs.write('playersDataAll.json', JSON.stringify(matches), 'w');
+    fs.write('playerStatisticLinksError10.json', JSON.stringify(playerStatisticLinksError), 'w');
     casper.done();
 });

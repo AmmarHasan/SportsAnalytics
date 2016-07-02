@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "casperjs": "*"
+    "casperjs": "*",
+    "json-2-csv": "^2.0.22",
+    "lodash": "^4.13.1"
   }
 }

@@ -1,6 +1,6 @@
 library(dplyr) 
 #Read dataset
-soccer<-read.csv("data//Premier League 2011-12 Match by Match.csv",header =T,sep =',')
+soccer<-read.csv("data//Premier League 2011-12 Match by Match.csv",header =T,sep =',',stringsAsFactors=FALSE)
 
 
 soccer %>%
@@ -15,4 +15,4 @@ soccer %>%
           "Goals.Conceded","Saves.Made","Catches","Punches","Drops","GK.Distribution",
           "Clean.Sheets","Error.leading.to.Goal","Error.leading.to.Attempt","Dispossessed"
           ,"Unsuccessful.Ball.Touch","Successful.Ball.Touch") %>%
-  saveRDS("output//Clean_PL_2011_12_Match_By_Match.rds")
+  saveRDS("output//PL11_12_MbyM_Selected_Attributes.rds")

@@ -1,11 +1,14 @@
-var fs=require('fs');
+var fs = require('fs');
 var something;
 var something2;
-fs.readFile('playersData.json',function (err,data) {
-    something=JSON.parse(data);
-    console.log(something);
+fs.readFile('data/playersData.json', function (err, data) {
+    something = JSON.parse(data);
+    console.log(something.length);
+    // for (var i = 0; i < something.length; i++) {
+    //     console.log(something[i].home + "-" + something[i].away);
+    // }
 });
-fs.readFile('playerStatisticLinks1.json',function (err,data) {
+fs.readFile('data/playerStatisticLinks.json',function (err,data) {
     something2=JSON.parse(data);
     console.log(something2.length);
 });
