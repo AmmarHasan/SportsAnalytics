@@ -29,7 +29,7 @@ getMatchIdForRating <- function(MergedTeamNames,PlayerName){
 
 #Read Datasets
 soccer<-readRDS("output//PL11_12_MbyM_Selected_Attributes.rds")
-ratings<-read.csv("data//PlayerRatings2.csv",header =T,sep =',',stringsAsFactors=FALSE)
+ratings<-read.csv("data//PlayerRatings.csv",header =T,sep =',',stringsAsFactors=FALSE)
 
 ## Transform PL11_12 dataset ##
 # Change Teams Name
@@ -88,8 +88,15 @@ ratings$MatchId<-gsub("youssoufmulumbu","youssufmulumbu",ratings$MatchId)
 ratings$MatchId<-gsub("mattupson","matthewupson",ratings$MatchId)
 ratings$MatchId<-gsub("joshvela","joshuavela",ratings$MatchId)
 ratings$MatchId<-gsub("mikewilliamson","michaelwilliamson",ratings$MatchId)
-ratings$MatchId<-gsub("mikewilliamson","michaelwilliamson",ratings$MatchId)
-ratings$MatchId<-gsub("mikewilliamson","michaelwilliamson",ratings$MatchId)
+ratings$MatchId<-gsub("bradjones","bradleyjones",ratings$MatchId)
+ratings$MatchId<-gsub("eggertjnsson","eggertgunnthrjnsson",ratings$MatchId)
+ratings$MatchId<-gsub("fbioaurlio","fabioaurelio",ratings$MatchId)
+ratings$MatchId<-gsub("henriquehilario","henriquehilrio",ratings$MatchId)
+ratings$MatchId<-gsub("jonflanagan","johnflanagan",ratings$MatchId)
+ratings$MatchId<-gsub("nicoyennaris","nicholasyennaris",ratings$MatchId)
+ratings$MatchId<-gsub("philneville","philipneville",ratings$MatchId)
+ratings$MatchId<-gsub("vincegrella","vincenzogrella",ratings$MatchId)
+ratings$MatchId<-gsub("johnnygorman","johngorman",ratings$MatchId)
 
 
 #Save

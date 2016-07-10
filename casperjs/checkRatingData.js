@@ -40,7 +40,7 @@ function getNonDuplicatedArray(arr) {
     return nonDuplicatedArray;
 }
 fs.readFile('data/playerStatisticLinks.json', function (err2, data) {
-    fs.readFile('data/playersData.json', function (err, data1) {
+    fs.readFile('data/playersDataWithoutID.json', function (err, data1) {
         // Read Files
         playerStatisticLinks = JSON.parse(data);
         playersData = JSON.parse(data1);
@@ -69,7 +69,7 @@ fs.readFile('data/playerStatisticLinks.json', function (err2, data) {
         // fs.writeFile('data/playerStatisticLinksErrorAll.json', JSON.stringify(playerStatisticLinksError), function (err) {
         //     if (err) return console.log(err);
         // });
-        fs.writeFile('playersDataComplete.json', JSON.stringify(homeAway), function (err) {
+        fs.writeFile('data/playersDataComplete.json', JSON.stringify(homeAway), function (err) {
             if (err) return console.log(err);
         });
     });
