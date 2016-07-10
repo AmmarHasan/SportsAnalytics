@@ -1,8 +1,5 @@
 var casper = require('casper').create({
     //     'includes/jquery2.2.4.js'      // This script will be injected in remote DOM on every request
-    clientScripts: [
-        'includes/casperjs-options.js'
-    ],
     pageSettings: {
         loadImages: false,        // The WebPage instance used by Casper will
         loadPlugins: false         // use these settings
@@ -12,10 +9,9 @@ var casper = require('casper').create({
 });
 var fs = require('fs');
 
-var playerStatisticLinks = fs.read('playerStatisticLinks.json');
+var playerStatisticLinks = fs.read('data/playerStatisticLinks.json');
 playerStatisticLinks = JSON.parse(playerStatisticLinks);
 // playerStatisticLinks = playerStatisticLinks.slice(309, 380);
-var playerStatisticLinksError = [];
 var matches = [];
 
 function getHomeAway() {
@@ -32,7 +28,7 @@ function getTables() {
             var name = rows[j].querySelector("td.pn a").innerText;
             var passAccuracy = rows[j].querySelector("td:nth-child(7)").innerHTML;
             var rating = rows[j].querySelector("td:nth-child(10)").innerHTML;
-            eachPlayerData.push({ PlayerName: name, PassAccuracy: parseInt(passAccuracy), Rating: parseInt(rating) });
+            eachPlayerData.push({ PlayerName: name, PassAccuracy: parseFloat(passAccuracy), Rating: parseFloat(rating) });
         }
         PlayersData.push(eachPlayerData);
     }
@@ -41,33 +37,14 @@ function getTables() {
 
 var iter = -1;
 
-casper.on('resource.request', function (requestData, networkRequest) {
-    // your filter url or ... then
-    if(requestData.url.indexOf('www.whoscored.com/Matches/')<0)
-    var skip = [
-        'googleads.g.doubleclick.net',
-        'cm.g.doubleclick.net',
-        'www.googleadservices.com',
-        'about:blank',
-        'cm.g.doubleclick.net/push',
-        'idsync.rlcdn.com',
-        'sync.mathtag.com/sync',
-        'image2.pubmatic.com',
-        'cm.send.microad',
-        'ib.adnxs.com',
-        'https://fqtag.com/',
-        'tpc.googlesyndication.com/',
-        'ib.adnxs.com',
-        'ads.pubmatic.com',
-        'googleads.g.doubleclick.net/',
-        'staticxx.facebook.com/connect/xd_arbiter.php'
-    ];
-    skip.forEach(function (needle) {
-        if (requestData.url.indexOf(needle) > 0) {
-            networkRequest.abort();
-        }
-    });
-});
+// casper.on('navigation.requested', function (requestData, networkRequest) {
+//     // your filter url or ... then
+//     if(requestData.indexOf('www.whoscored.com')<0){
+//         this.echo("/n"+"******* Aborting ****** " + "\n" + requestData + "\n");
+//         networkRequest.abort();
+//         page.navigationLocked = true; 
+//     }
+// });
 
 casper.start().then(function () {
     this.each(playerStatisticLinks, function () {
@@ -94,9 +71,12 @@ casper.start().then(function () {
         });
     });
 });
+casper.on('error', function(err) {
+    this.echo("************ERROR***********\n " + err);
+    fs.write('data/playersDataCompleteWithFloatRating2.json', JSON.stringify(matches), 'w');
+});
 casper.run(function () {
     console.log(matches);
-    fs.write('playersDataAll.json', JSON.stringify(matches), 'w');
-    fs.write('playerStatisticLinksError10.json', JSON.stringify(playerStatisticLinksError), 'w');
+    fs.write('data/playersDataCompleteWithFloatRating2.json', JSON.stringify(matches), 'w');
     casper.done();
 });
