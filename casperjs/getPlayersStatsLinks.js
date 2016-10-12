@@ -43,7 +43,7 @@ casper.run(function () {
     for(var i in playerStatisticLinks) {
         console.log(playerStatisticLinks[i]);
     }
-    fs.write('playerStatisticLinks.json', JSON.stringify(playerStatisticLinks),'w');
+    fs.write('data/playerStatisticLinks.json', JSON.stringify(playerStatisticLinks),'w');
     casper.done();
 });
 

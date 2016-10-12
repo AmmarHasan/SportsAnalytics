@@ -25,7 +25,7 @@ for (var l = 0; l < 9; l++) {
 }
 
 casper.run(function () {
-  fs.write('matchesList.json', JSON.stringify(matches),'w');
+  fs.write('data/matchesList.json', JSON.stringify(matches),'w');
   console.log(matches);
   casper.done();
 });
