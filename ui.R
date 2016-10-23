@@ -1,3 +1,4 @@
+setwd(getwd())
 dashboardPage(
   dashboardHeader(title = "Soccer Analytics"),
   dashboardSidebar(
@@ -5,6 +6,7 @@ dashboardPage(
     
     sidebarMenu(
       id = "sbMenu",
+      menuItem("Front Page",tabName = "frontPage"),
       menuItem(
         "Teams", tabName = "teams",icon = icon("table"),
         menuSubItem("At A Glance", tabName = "tm_glance"),
@@ -24,27 +26,44 @@ dashboardPage(
         menuSubItem("Points per Game", tabName = "pl_ppg"),
         menuSubItem("Sequences-Goals",tabName = "pl_seqs_goals")
         
+      ),
+      tags$hr(),
+      
+      tags$body(
+        a(
+          href = "https://twitter.com/Ammar1994", target = "_blank",img(src = "images/twitter.png",class = "addpad")
+        ),
+        a(
+          href = "mailto:taha.zaheer27@gmail.com",img(src = "images/gmail.png",class = "addpad")
+        ),
+        a(
+          href = "https://github.com/ammarhasan/sportsanalytics",target = "_blank",img(src = "images/github.png",class = "addpad")
+        )
       )
     )
   ),
   dashboardBody(
+    includeCSS("www/style.css"),
     tabItems(
-      # First tab content
-      tabItem(tabName = "dashboard",
-              fluidRow(
-                box(plotOutput("plot1", height = 250)),
-                
-                box(
-                  title = "Controls",
-                  sliderInput("slider", "Number of observations:", 1, 100, 50)
-                )
+    ## Front Page
+    tabItem("frontPage",
+            fluidRow(column(
+              width = 4,
+              box(
+                class = "information",
+                width = 12,
+                status = "warning",solidHeader = TRUE,title = "Authors",
+                collapsible = T,collapsed = F,
+                htmlOutput("authors")
               )
-      ),
-      
-      # Second tab content
-      tabItem(tabName = "widgets",
-              h2("Widgets tab content")
-      )
-    )
-  )
+            ))),
+    tabItem(tabName = "tm_playerSummary",
+            fluidRow(
+              box(
+                width = 12,status = "success",solidHeader = TRUE,title = "Player Summary ",
+                DT::dataTableOutput('teamYear')
+              )
+              
+            ))
+  ))
 )

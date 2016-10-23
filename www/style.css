@@ -1,0 +1,12 @@
+/* impact of using DT package */
+
+.addpad{
+  width: 25px;
+  margin: 0px 20px;
+}
+
+label{
+  font-size: 12px;
+  font-weight: normal;
+  color:black;
+}

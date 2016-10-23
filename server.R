@@ -6,8 +6,7 @@ values$MATCHID <- NULL
 
 values$teamYears <- NULL
 
-shinyServer(function(input, output) {
-  
+shinyServer(function(input, output, session) {
   output$a <- renderUI({
     print(input$sbMenu)
     if (input$sbMenu=="pl_glance" || input$sbMenu=="pl_career" || input$sbMenu=="pl_opponent" || input$sbMenu=="pl_goals" || input$sbMenu=="pl_ppg" || input$sbMenu=="pl_seqs_goals") {
@@ -22,7 +21,28 @@ shinyServer(function(input, output) {
   })
   
   output$plot1 <- renderPlot({
+    set.seed(122)
+    histdata <- rnorm(500)
     data <- histdata[seq_len(input$slider)]
     hist(data)
   })
+  
+  # Observe Evenets
+  observeEvent(input$playerA,{
+    if(input$playerA==""){
+      values$playerID <- input$playerA
+    }
+    print("event fired input$playerA:") 
+    print(input$playerA)
+  })
+  
+  observeEvent(input$teamA,{
+    values$TEAMNAME <- input$teamA
+    print("event fired input$teamA:")
+    print(input$teamA)
+  })
+  
+  # Html Output Files
+  source("R/authors.R", local=TRUE)
+  source("R/teamYear.R", local=TRUE)
 })
