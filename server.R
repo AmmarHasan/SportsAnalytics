@@ -20,12 +20,6 @@ shinyServer(function(input, output, session) {
     inputPanel(selectInput("playerA", label=NULL,selected=values$TEAMNAME, playersChoice))
   })
   
-  output$plot1 <- renderPlot({
-    set.seed(122)
-    histdata <- rnorm(500)
-    data <- histdata[seq_len(input$slider)]
-    hist(data)
-  })
   
   # Observe Evenets
   observeEvent(input$playerA,{
@@ -45,4 +39,5 @@ shinyServer(function(input, output, session) {
   # Html Output Files
   source("R/authors.R", local=TRUE)
   source("R/teamYear.R", local=TRUE)
+  source("R/playerWiki.R", local=TRUE)
 })
