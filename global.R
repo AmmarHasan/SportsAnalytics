@@ -7,6 +7,7 @@ library(plotly)
 library(stringr)
 library(httr)
 library(rvest)
+library(plotly)
 
 soccer <- readRDS("output//soccer_dataset.rds")
 summary <- readRDS("output//summary.rds")

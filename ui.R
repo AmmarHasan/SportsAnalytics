@@ -2,8 +2,9 @@ setwd(getwd())
 dashboardPage(
   dashboardHeader(title = "Soccer Analytics"),
   dashboardSidebar(
-    uiOutput("a"),
-    
+    uiOutput("selectPlayer"),
+    uiOutput("selectTeam"),
+    uiOutput("selectOpposition"),
     sidebarMenu(
       id = "sbMenu",
       menuItem("Front Page",tabName = "frontPage"),
@@ -19,6 +20,11 @@ dashboardPage(
         menuSubItem("Defensive", tabName = "pl_defense"),
         menuSubItem("Passing", tabName = "pl_pass")
         
+      ),
+      menuItem(
+        "Matches", tabName = "matches",icon = icon("table"),
+        menuSubItem("By Team", tabName = "mt_team"),
+        menuSubItem("By Player",tabName = "mt_player")
       ),
       tags$hr(),
       
@@ -52,7 +58,7 @@ dashboardPage(
               box(
                 width = 12,
                 status = "success",solidHeader = TRUE,title = "Twitter Feed",
-                collapsible = T,collapsed = T,
+                collapsible = T,collapsed = F,
                 tags$body(
                   includeScript("www/twitter.js"),
                   a(
@@ -80,6 +86,23 @@ dashboardPage(
                 collapsible = TRUE, collapsed = FALSE,
                 uiOutput("playerWiki")
               )
-            )))
+            ))),
+    tabItem(tabName = "pl_pass",
+            fluidRow(column(
+              width = 5,offset = 3,
+              box(
+                width = 12,title = "Passes",solidHeader = TRUE,status = 'success',
+                collapsible = TRUE, collapsed = FALSE,
+                plotlyOutput("passingPieChart")
+              )
+            ))),
+    tabItem(tabName = "mt_team",
+            fluidRow(
+              box(
+                class = "information", width = 12, status = "warning",solidHeader = TRUE,
+                title = "Authors", collapsible = T,collapsed = F,
+                htmlOutput("authors2")
+              )
+            ))
   ))
 )
