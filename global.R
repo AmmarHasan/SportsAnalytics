@@ -11,6 +11,7 @@ library(plotly)
 
 soccer <- readRDS("output//soccer_dataset.rds")
 summary <- readRDS("output//summary.rds")
+topGoalScorers <- readRDS("output//topGoalScorers.rds")
 
 teamsChoice <- soccer$Team %>% unique() %>% sort()
 uniquePlayers <- soccer %>% select(Player.ID, Player.Name) %>% unique()

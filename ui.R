@@ -47,7 +47,7 @@ dashboardPage(
     ## Front Page
     tabItem("frontPage",
             fluidRow(column(
-              width = 3,
+              width = 4,
               box(
                 class = "information",
                 width = 12,
@@ -69,6 +69,26 @@ dashboardPage(
                     "data-chrome" = "nofooter transparent noheader"
                   )
                 )
+              ),
+              box(
+                width = 12,
+                status = "success",solidHeader = TRUE,title = "Top Goal Scorers",collapsible = T,collapsed = F,
+                DT::dataTableOutput('topGoalScorers')
+              ),
+              box(
+                width = 12,
+                status = "success",solidHeader = TRUE,title = "Top Assists",collapsible = T,collapsed = F,
+                DT::dataTableOutput('topAssists')
+              ),
+              box(
+                width = 12,
+                status = "success",solidHeader = TRUE,title = "Highest Pass Acc%",collapsible = T,collapsed = F,
+                DT::dataTableOutput('topPassAccuracy')
+              ),
+              box(
+                width = 12,
+                status = "success",solidHeader = TRUE,title = "Top Tacklers",collapsible = T,collapsed = F,
+                DT::dataTableOutput('topTacklers')
               )
             ))),
     tabItem(tabName = "tm_playerSummary",

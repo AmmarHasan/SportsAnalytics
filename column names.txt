@@ -1,0 +1,139 @@
+colnames(soccer %>% select(contains("Pass")))
+ [1] "Total.Successful.Passes.All"                   
+ [2] "Total.Unsuccessful.Passes.All"                 
+ [3] "Key.Passes"                                    
+ [4] "Total.Successful.Passes.Excl.Crosses.Corners"  
+ [5] "Total.Unsuccessful.Passes.Excl.Crosses.Corners"
+ [6] "Successful.Passes.Own.Half"                    
+ [7] "Unsuccessful.Passes.Own.Half"                  
+ [8] "Successful.Passes.Opposition.Half"             
+ [9] "Unsuccessful.Passes.Opposition.Half"           
+[10] "Successful.Passes.Defensive.third"             
+[11] "Unsuccessful.Passes.Defensive.third"           
+[12] "Successful.Passes.Middle.third"                
+[13] "Unsuccessful.Passes.Middle.third"              
+[14] "Successful.Passes.Final.third"                 
+[15] "Unsuccessful.Passes.Final.third"               
+[16] "Successful.Short.Passes"                       
+[17] "Unsuccessful.Short.Passes"                     
+[18] "Successful.Long.Passes"                        
+[19] "Unsuccessful.Long.Passes"                      
+[20] "Pass.Forward"                                  
+[21] "Pass.Backward"                                 
+[22] "Pass.Left"                                     
+[23] "Pass.Right"                                    
+[24] "PassAccuracy"         
+
+
+colnames(soccer %>% select(contains("goals")))
+ [1] "Goals"                       "Shots.On.Target.inc.goals"   "Penalty.Goals"              
+ [4] "Direct.Free.kick.Goals"      "Goals.from.Inside.Box"       "Goals.from.Outside.Box"     
+ [7] "Headed.Goals"                "Left.Foot.Goals"             "Right.Foot.Goals"           
+[10] "Other.Goals"                 "Goals.Open.Play"             "Goals.from.Corners"         
+[13] "Goals.from.Throws"           "Goals.from.Direct.Free.Kick" "Goals.from.Set.Play"        
+[16] "Goals.from.penalties"        "Goals.as.a.substitute"       "Goals.Conceded"             
+[19] "Goals.Conceded.Inside.Box"   "Goals.Conceded.Outside.Box" 
+
+
+colnames(soccer %>% select(contains("shot")))
+ [1] "Shots.On.Target.inc.goals"           "Shots.Off.Target.inc.woodwork"      
+ [3] "Blocked.Shots"                       "Shots.On.from.Inside.Box"           
+ [5] "Shots.Off.from.Inside.Box"           "Blocked.Shots.from.Inside.Box"      
+ [7] "Shots.On.Target.Outside.Box"         "Shots.Off.Target.Outside.Box"       
+ [9] "Blocked.Shots.Outside.Box"           "Headed.Shots.On.Target"             
+[11] "Headed.Shots.Off.Target"             "Headed.Blocked.Shots"               
+[13] "Left.Foot.Shots.On.Target"           "Left.Foot.Shots.Off.Target"         
+[15] "Left.Foot.Blocked.Shots"             "Right.Foot.Shots.On.Target"         
+[17] "Right.Foot.Shots.Off.Target"         "Right.Foot.Blocked.Shots"           
+[19] "Other.Shots.On.Target"               "Other.Shots.Off.Target"             
+[21] "Other.Blocked.Shots"                 "Shots.Cleared.off.Line"             
+[23] "Shots.Cleared.off.Line.Inside.Area"  "Shots.Cleared.off.Line.Outside.Area"
+[25] "Shots.On.Conceded"                   "Shots.On.Conceded.Inside.Box"       
+[27] "Shots.On.Conceded.Outside.Box"      
+
+colnames(soccer %>% select(contains("duel")))
+[1] "Duels.won"         "Duels.lost"        "Aerial.Duels.won"  "Aerial.Duels.lost"
+[5] "Ground.Duels.won"  "Ground.Duels.lost"
+
+
+colnames(soccer %>% select(contains("attempt")))
+ [1] "Attempts.Open.Play.on.target"              "Attempts.from.Corners.on.target"          
+ [3] "Attempts.from.Throws.on.target"            "Attempts.from.Direct.Free.Kick.on.target" 
+ [5] "Attempts.from.Set.Play.on.target"          "Attempts.from.Penalties.on.target"        
+ [7] "Attempts.Open.Play.off.target"             "Attempts.from.Corners.off.target"         
+ [9] "Attempts.from.Throws.off.target"           "Attempts.from.Direct.Free.Kick.off.target"
+[11] "Attempts.from.Set.Play.off.target"         "Attempts.from.Penalties.off.target"       
+[13] "Error.leading.to.Attempt"                 
+
+
+colnames(soccer %>% select(contains("cross")))
+ [1] "Total.Successful.Passes.Excl.Crosses.Corners"  
+ [2] "Total.Unsuccessful.Passes.Excl.Crosses.Corners"
+ [3] "Successful.Crosses.Corners"                    
+ [4] "Unsuccessful.Crosses.Corners"                  
+ [5] "Successful.Crosses.Corners.Left"               
+ [6] "Unsuccessful.Crosses.Corners.Left"             
+ [7] "Successful.Crosses.Left"                       
+ [8] "Unsuccessful.Crosses.Left"                     
+ [9] "Successful.Crosses.Corners.Right"              
+[10] "Unsuccessful.Crosses.Corners.Right"            
+[11] "Successful.Crosses.Right"                      
+[12] "Unsuccessful.Crosses.Right"                    
+[13] "Successful.Crosses.Corners.in.the.air"         
+[14] "Unsuccessful.Crosses.Corners.in.the.air"       
+[15] "Successful.crosses.in.the.air"                 
+[16] "Unsuccessful.crosses.in.the.air"               
+[17] "Successful.open.play.crosses"                  
+[18] "Unsuccessful.open.play.crosses"                
+[19] "Crosses.not.Claimed"          
+
+
+colnames(soccer %>% select(contains("corner")))
+ [1] "Goals.from.Corners"                            
+ [2] "Attempts.from.Corners.on.target"               
+ [3] "Attempts.from.Corners.off.target"              
+ [4] "Total.Successful.Passes.Excl.Crosses.Corners"  
+ [5] "Total.Unsuccessful.Passes.Excl.Crosses.Corners"
+ [6] "Successful.Crosses.Corners"                    
+ [7] "Unsuccessful.Crosses.Corners"                  
+ [8] "Corners.Taken.incl.short.corners"              
+ [9] "Corners.Conceded"                              
+[10] "Successful.Corners.into.Box"                   
+[11] "Unsuccessful.Corners.into.Box"                 
+[12] "Short.Corners"                                 
+[13] "Successful.Crosses.Corners.Left"               
+[14] "Unsuccessful.Crosses.Corners.Left"             
+[15] "Successful.Corners.Left"                       
+[16] "Unsuccessful.Corners.Left"                     
+[17] "Successful.Crosses.Corners.Right"              
+[18] "Unsuccessful.Crosses.Corners.Right"            
+[19] "Successful.Corners.Right"                      
+[20] "Unsuccessful.Corners.Right"                    
+[21] "Successful.Crosses.Corners.in.the.air"         
+[22] "Unsuccessful.Crosses.Corners.in.the.air"       
+[23] "Goal.Assist.Corner"                            
+[24] "Key.Corner
+
+
+ colnames(soccer %>% select(contains("foul")))
+[1] "Total.Fouls.Conceded"              "Fouls.Conceded.exc.handballs.pens"
+[3] "Total.Fouls.Won"                   "Fouls.Won.in.Danger.Area.inc.pens"
+[5] "Fouls.Won.not.in.danger.area"      "Foul.Won.Penalty"   
+
+
+colnames(soccer %>% select(contains("tackle")))
+[1] "Tackles.Won"     "Tackles.Lost"    "Last.Man.Tackle"  
+
+colnames(soccer %>% select(contains("clearan")))
+[1] "Total.Clearances"        "Headed.Clearances"       "Other.Clearances"       
+[4] "Clearances.Off.the.Line"
+
+colnames(soccer %>% select(contains("save")))
+[1] "Penalties.Saved"             "Saves.Made"                  "Saves.Made.from.Inside.Box" 
+[4] "Saves.Made.from.Outside.Box" "Saves.from.Penalty"         
+
+colnames(soccer %>% select(contains("ball")))
+[1] "Successful.Long.Balls"             "Unsuccessful.Long.Balls"          
+[3] "Through.Ball"                      "Fouls.Conceded.exc.handballs.pens"
+[5] "Handballs.Conceded"                "Unsuccessful.Ball.Touch"          
+[7] "Successful.Ball.Touch"

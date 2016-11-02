@@ -59,4 +59,5 @@ shinyServer(function(input, output, session) {
   source("R/teamYear.R", local=TRUE)
   source("R/playerWiki.R", local=TRUE)
   source("R/passingPieChart.R", local=TRUE)
+  source("R/topPlayers.R", local=TRUE)
 })
