@@ -55,7 +55,7 @@ shinyServer(function(input, output, session) {
   })
   
   # Html Output Files
-  source("R/authors.R", local=TRUE)
+  source("R/frontPage.R", local=TRUE)
   source("R/teamYear.R", local=TRUE)
   source("R/playerWiki.R", local=TRUE)
   source("R/passingPieChart.R", local=TRUE)
