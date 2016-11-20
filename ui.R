@@ -54,7 +54,8 @@ dashboardPage(
                 width = 12,
                 status = "warning",solidHeader = TRUE,title = "Authors",
                 collapsible = T,collapsed = F,
-                htmlOutput("authors")
+                htmlOutput("authors"),
+                tableOutput('tableComparision2')
               ),
               box(
                 class = "information",
@@ -150,27 +151,37 @@ dashboardPage(
               )
             ))),
     tabItem(tabName = "pl_compare",
-            fluidRow(column(
-              width=12,
-              class = "boxWithLessPadding",
-              box(
-                width = 4,solidHeader = TRUE,status = 'success',
-                collapsible = FALSE,
-                uiOutput("playerComparison1"),
-                plotlyOutput("appearanceChartplayerA")
-              ),
-              box(
-                width = 4,title = "Goal Types",solidHeader = TRUE,status = 'success',
-                collapsible = TRUE, collapsed = FALSE,
-                plotOutput("comparePlayerGoals")
-              ),
-              box(
-                width = 4,solidHeader = TRUE,status = 'success',
-                collapsible =FALSE,
-                uiOutput("playerComparison2"),
-                plotlyOutput("appearanceChartplayerB")
+            fluidRow(
+              column(
+                width = 4,
+                class = "boxWithLessPadding",
+                box(
+                  width = 12,solidHeader = TRUE,status = 'success',
+                  collapsible = FALSE,
+                  uiOutput("playerComparison1"),
+                  plotlyOutput("appearanceChartplayerA")
+                )
+              ),column(
+                width = 4,
+                class = "boxWithLessPadding",
+                box(width = 12,
+                    tableOutput('tableComparision')),
+                box(
+                  width = 12,title = "Goal Types",solidHeader = TRUE,status = 'success',
+                  collapsible = TRUE, collapsed = FALSE,
+                  plotOutput("comparePlayerGoals")
+                )
+              ),column(
+                width = 4,
+                class = "boxWithLessPadding",
+                box(
+                  width = 12,solidHeader = TRUE,status = 'success',
+                  collapsible = FALSE,
+                  uiOutput("playerComparison2"),
+                  plotlyOutput("appearanceChartplayerB")
+                )
               )
-            ))),
+            )),
     tabItem(tabName = "mt_team",
             fluidRow(
               box(

@@ -81,3 +81,18 @@ li h3{
 .small-box h3 {
     font-size: 22px;
 }
+
+
+/*To hide tables first column and row*/
+#tableComparision td:first-child {
+    display: none;
+}
+#tableComparision tr:first-child {
+    display: none;
+}
+#tableComparision table {
+  text-align: center;
+  width:100%;
+  margin-bottom:0px;
+}
+/**/

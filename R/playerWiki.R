@@ -48,3 +48,6 @@ getFromWiki <- function(class, player) {
 # dsa<-data.frame(player=player,image=as(vcardInfo,"character"))
 # image<-dsa%>%filter(player==17500)%>%select(image)
 # HTML(as(image,"character"))
+output$playerWiki <- renderUI({
+  getFromWiki(".vcard",input$playerA)
+})

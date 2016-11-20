@@ -60,3 +60,12 @@ output$comparePlayerGoals <- renderPlot({
   )
 
 })
+
+
+output$tableComparision <- renderTable({
+  req(input$playerA,input$playerB)
+  attrib <- c("Assists","Time.Played")
+  playerData1 <- summary %>% filter(Player.ID == input$playerA) %>% ungroup()%>% select(one_of(attrib)) %>% as.character()
+  playerData2 <- summary %>% filter(Player.ID == input$playerB) %>% ungroup()%>% select(one_of(attrib)) %>% as.character()
+  data.frame(playerData1,attrib,playerData2)
+})  
