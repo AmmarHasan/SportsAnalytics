@@ -10,3 +10,74 @@ label{
   font-weight: normal;
   color:black;
 }
+
+.container {
+    width: 200px;
+    max-height: 300px;
+}
+
+/* resize images */
+.container img {
+    width: 100%;
+    height: auto;
+    max-height:300px;
+    border-radius:8px;
+}
+
+.text-center{
+  text-align:center  ;
+}
+
+li{
+    list-style-type: none;
+    clear:both;
+}
+
+
+li h3{
+    font-size: large;
+    margin-bottom: 1px;
+    text-align:center;
+}
+
+.boxWithLessPadding{
+  padding:0px;
+}
+
+.boxWithLessPadding > div{
+ padding-left:8px;
+ padding-right:8px;
+}
+
+
+#playerComparison1 .small-box{
+ width: 110px;
+ max-height: 90px;
+ margin:3px;
+ margin-top:7px;
+}
+#playerComparison1 .col-sm-4{
+  padding-left:0px;
+  padding-right:8px;
+  margin:8px 0px;
+}
+
+#playerComparison2 .small-box{
+ width: 110px;
+ max-height: 90px;
+ margin:3px;
+ margin-top:7px;
+}
+#playerComparison2 .col-sm-4{
+  padding-left:0px;
+  padding-right:8px;
+  margin:8px 0px;
+}
+
+.small-box .icon-large{
+  font-size: 50px;
+}
+
+.small-box h3 {
+    font-size: 22px;
+}

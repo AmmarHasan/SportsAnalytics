@@ -3,6 +3,7 @@ dashboardPage(
   dashboardHeader(title = "Soccer Analytics"),
   dashboardSidebar(
     uiOutput("selectPlayer"),
+    uiOutput("selectPlayerToCompare"),
     uiOutput("selectTeam"),
     uiOutput("selectOpposition"),
     sidebarMenu(
@@ -18,8 +19,8 @@ dashboardPage(
         menuSubItem("At A Glance", tabName = "pl_glance"),
         menuSubItem("Attacking",tabName = "pl_attack"),
         menuSubItem("Defensive", tabName = "pl_defense"),
-        menuSubItem("Passing", tabName = "pl_pass")
-        
+        menuSubItem("Passing", tabName = "pl_pass"),
+        menuSubItem("Compare", tabName = "pl_compare")
       ),
       menuItem(
         "Matches", tabName = "matches",icon = icon("table"),
@@ -47,7 +48,7 @@ dashboardPage(
     ## Front Page
     tabItem("frontPage",
             fluidRow(column(
-              width = 4,
+              width = 5,
               box(
                 class = "information",
                 width = 12,
@@ -56,6 +57,16 @@ dashboardPage(
                 htmlOutput("authors")
               ),
               box(
+                class = "information",
+                width = 12,
+                status = "warning",solidHeader = TRUE,title = "Description",
+                collapsible = T,collapsed = F,
+                htmlOutput("description")
+              )
+            ),
+            column(
+              width = 7,
+              box(
                 width = 12,
                 status = "success",solidHeader = TRUE,title = "Twitter Feed",
                 collapsible = T,collapsed = F,
@@ -63,34 +74,15 @@ dashboardPage(
                   includeScript("www/twitter.js"),
                   a(
                     "Soccer", class = "twitter-timeline",
-                    width = "320",
+                    width = "560",
                     href = "https://twitter.com/pssGuy/timelines/524678699061641216",
                     "data-widget-id" = "524686407298596864",
                     "data-chrome" = "nofooter transparent noheader"
                   )
                 )
-              ),
-              box(
-                width = 12,
-                status = "success",solidHeader = TRUE,title = "Top Goal Scorers",collapsible = T,collapsed = F,
-                DT::dataTableOutput('topGoalScorers')
-              ),
-              box(
-                width = 12,
-                status = "success",solidHeader = TRUE,title = "Top Assists",collapsible = T,collapsed = F,
-                DT::dataTableOutput('topAssists')
-              ),
-              box(
-                width = 12,
-                status = "success",solidHeader = TRUE,title = "Highest Pass Acc%",collapsible = T,collapsed = F,
-                DT::dataTableOutput('topPassAccuracy')
-              ),
-              box(
-                width = 12,
-                status = "success",solidHeader = TRUE,title = "Top Tacklers",collapsible = T,collapsed = F,
-                DT::dataTableOutput('topTacklers')
               )
-            ))),
+            ))
+            ),
     tabItem(tabName = "tm_playerSummary",
             fluidRow(
               box(
@@ -100,28 +92,90 @@ dashboardPage(
             )),
     tabItem(tabName = "pl_glance",
             fluidRow(column(
+              width = 4,
+              box(
+                width = 12,
+                status = "success",solidHeader = TRUE,title = "Top Goal Scorers",collapsible = T,collapsed = F,
+                DT::dataTableOutput('topGoalScorers')
+              ),
+              box(
+                width = 12,
+                status = "success",solidHeader = TRUE,title = "Top Assists",collapsible = T,collapsed = F,
+                DT::dataTableOutput('topAssists')
+              )),
+              column(
+                width = 4,
+                box(
+                  width = 12,title = "Wikipedia (includes non - EPL data)",solidHeader = TRUE,status = 'success',
+                  collapsible = TRUE, collapsed = FALSE,
+                  uiOutput("playerWiki")
+                )),
+              column(
+                width = 4,
+                box(
+                  width = 12,
+                  status = "success",solidHeader = TRUE,title = "Highest Pass Acc%",collapsible = T,collapsed = F,
+                  DT::dataTableOutput('topPassAccuracy')
+                ),
+                box(
+                  width = 12,
+                  status = "success",solidHeader = TRUE,title = "Top Tacklers",collapsible = T,collapsed = F,
+                  DT::dataTableOutput('topTacklers')
+                )
+              )
+            )),
+    tabItem(tabName = "pl_attack",
+            fluidRow(column(
               width = 5,offset = 3,
               box(
-                width = 12,title = "Wikipedia (includes non-EPL data)",solidHeader = TRUE,status = 'success',
-                collapsible = TRUE, collapsed = FALSE,
-                uiOutput("playerWiki")
+                width = 12,title = "Goals",solidHeader = TRUE,status = 'success',
+                collapsible = TRUE, collapsed = FALSE
+                # , plotlyOutput("passingPieChart")
               )
             ))),
     tabItem(tabName = "pl_pass",
             fluidRow(column(
-              width = 5,offset = 3,
+              width = 5,
               box(
-                width = 12,title = "Passes",solidHeader = TRUE,status = 'success',
+                width = 12,title = "Pass Success",solidHeader = TRUE,status = 'success',
                 collapsible = TRUE, collapsed = FALSE,
                 plotlyOutput("passingPieChart")
+              )
+            ),column(
+              width = 7,
+              box(
+                width = 12,title = "Pass Types",solidHeader = TRUE,status = 'success',
+                collapsible = TRUE, collapsed = FALSE,
+                plotOutput("passingRadar")
+              )
+            ))),
+    tabItem(tabName = "pl_compare",
+            fluidRow(column(
+              width=12,
+              class = "boxWithLessPadding",
+              box(
+                width = 4,solidHeader = TRUE,status = 'success',
+                collapsible = FALSE,
+                uiOutput("playerComparison1"),
+                plotlyOutput("appearanceChartplayerA")
+              ),
+              box(
+                width = 4,title = "Goal Types",solidHeader = TRUE,status = 'success',
+                collapsible = TRUE, collapsed = FALSE,
+                plotOutput("comparePlayerGoals")
+              ),
+              box(
+                width = 4,solidHeader = TRUE,status = 'success',
+                collapsible =FALSE,
+                uiOutput("playerComparison2"),
+                plotlyOutput("appearanceChartplayerB")
               )
             ))),
     tabItem(tabName = "mt_team",
             fluidRow(
               box(
                 class = "information", width = 12, status = "warning",solidHeader = TRUE,
-                title = "Authors", collapsible = T,collapsed = F,
-                htmlOutput("authors2")
+                title = "Authors", collapsible = T,collapsed = F
               )
             ))
   ))

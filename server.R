@@ -1,5 +1,6 @@
 values <- reactiveValues()
-values$playerID <- 28566 
+values$playerID <- 17500 
+values$playerToCompareID <- 13017 
 values$TEAMNAME <- NULL
 values$OPPNAME <- NULL
 values$Opponents <- NULL
@@ -9,15 +10,17 @@ values$teamYears <- NULL
 
 shinyServer(function(input, output, session) {
   
-  output$authors2 <- renderUI({
-    div(h4("Taha Zaheer SE-11"),
-        h4("Ammar Hasan SE-52"))
-  })
-  
   output$selectPlayer <- renderUI({
     print(input$sbMenu)
-    if (input$sbMenu=="pl_glance" || input$sbMenu=="pl_pass" || input$sbMenu=="pl_opponent" || input$sbMenu=="pl_goals" ||input$sbMenu=="mt_team") {
+    if (input$sbMenu=="pl_glance" || input$sbMenu=="pl_pass" || input$sbMenu=="pl_opponent" || input$sbMenu=="pl_goals" ||input$sbMenu=="pl_compare" ||input$sbMenu=="mt_team") {
       inputPanel(selectInput("playerA", label="Type Name and Select", choices =playerChoice,selected=values$playerID))
+    }
+  })
+  
+  output$selectPlayerToCompare <- renderUI({
+    print(input$sbMenu)
+    if (input$sbMenu=="pl_compare") {
+      inputPanel(selectInput("playerB", label="Compare Player", choices =playerChoice,selected=values$playerToCompareID))
     }
   })
   
@@ -39,6 +42,7 @@ shinyServer(function(input, output, session) {
     inputPanel(selectInput("playerA", label="Type Name and Select", choices =playerChoice,selected=values$playerID))
   })
 
+  
   # Observe Evenets
   observeEvent(input$playerA,{
     if(input$playerA==""){
@@ -58,6 +62,8 @@ shinyServer(function(input, output, session) {
   source("R/frontPage.R", local=TRUE)
   source("R/teamYear.R", local=TRUE)
   source("R/playerWiki.R", local=TRUE)
-  source("R/passingPieChart.R", local=TRUE)
+  source("R/passingCharts.R", local=TRUE)
   source("R/topPlayers.R", local=TRUE)
+  source("R/comparePlayers.R", local=TRUE)
+  source("R/appearanceCharts.R", local=TRUE)
 })
