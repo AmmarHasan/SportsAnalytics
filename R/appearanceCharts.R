@@ -9,8 +9,9 @@ createAppearancePieChart<- function(playerId){
     data3, labels = ~ Appearances, values = ~ data2, type = 'pie'
   ) %>%
     layout(
+      margin=list(b=20, t=40),
       title = 'Total Appearances',
-      autosize = F, width = 300, height = 300,showlegend = FALSE,
+      autosize = F, width = 300, height = 320,showlegend = FALSE,
       xaxis = list(
         showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE
       ),

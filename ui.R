@@ -83,7 +83,16 @@ dashboardPage(
                 )
               )
             ))
-            ),
+    ),
+    tabItem(tabName = "tm_glance",
+            fluidRow(column(
+              width=9,
+              offset = 1,
+              box(
+                width = 12,status = "success",solidHeader = TRUE,title = "Dream Team",
+                uiOutput("dreamTeam")
+              )
+            ))),
     tabItem(tabName = "tm_playerSummary",
             fluidRow(
               box(
@@ -159,6 +168,8 @@ dashboardPage(
                   width = 12,solidHeader = TRUE,status = 'success',
                   collapsible = FALSE,
                   uiOutput("playerComparison1"),
+                  plotlyOutput("ratingPrediction1"),
+                  br(),
                   plotlyOutput("appearanceChartplayerA")
                 )
               ),column(
@@ -178,6 +189,8 @@ dashboardPage(
                   width = 12,solidHeader = TRUE,status = 'success',
                   collapsible = FALSE,
                   uiOutput("playerComparison2"),
+                  plotlyOutput("ratingPrediction2"),
+                  br(),
                   plotlyOutput("appearanceChartplayerB")
                 )
               )

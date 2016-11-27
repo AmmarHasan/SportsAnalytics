@@ -66,4 +66,5 @@ shinyServer(function(input, output, session) {
   source("R/topPlayers.R", local=TRUE)
   source("R/comparePlayers.R", local=TRUE)
   source("R/appearanceCharts.R", local=TRUE)
+  source("R/ratingCharts.R", local=TRUE)
 })

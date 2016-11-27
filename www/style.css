@@ -84,15 +84,109 @@ li h3{
 
 
 /*To hide tables first column and row*/
-#tableComparision td:first-child {
+#tableComparision thead:first-child {
     display: none;
 }
-#tableComparision tr:first-child {
-    display: none;
-}
+
 #tableComparision table {
   text-align: center;
-  width:100%;
+  width:100% !important;
   margin-bottom:0px;
 }
 /**/
+
+
+/* WHOSCORED Dream team*/
+.best-formation, #tournament-formation-content {
+    background: url(/img/pitch4.png) no-repeat scroll right top transparent;
+    margin-top: 1em;
+    height: 400px;
+    width: 690px;
+}
+
+.pitch .player-wrapper {
+    position: absolute;
+    margin-left: -2.2em;
+    margin-top: -1.5em;
+    white-space: nowrap;
+    text-align: center;
+}
+.pitch .player-wrapper li {
+    line-height: 1em;
+}
+.team-pitch-formation {
+    width: 100%;
+    text-align: center;
+}
+
+.best-formation .team-emblem, #tournament-formation-content .team-emblem {
+    height: 4em;
+    position: absolute;
+    width: 4em;
+}
+
+.pitch .player-wrapper li {
+    line-height: 1em;
+}
+.best-formation .player, #tournament-formation-content .player, #team-formations-content .player {
+    position: relative;
+    display: inline-block;
+    text-align: left;
+}
+.best-formation .player, #tournament-formation-content .player {
+    height: 4em;
+    width: 4em;
+}
+.team-pitch-formation .team-link {
+    color: #CCC;
+    font-size: .8em;
+    font-weight: bold;
+}
+
+.team-pitch-formation .player-stats {
+    width: 9em;
+    padding-top: .5em;
+    font-size: .9167em;
+    text-align: center;
+    color: #D0D0D0;
+}
+.pitch .player-rating {
+    background-color: #EB5B14;
+    color: #FFF;
+    display: inline-block;
+    font-size: 1.3em;
+    font-weight: bold;
+    height: 1.2em;
+    line-height: 1.3em;
+    width: 2em;
+    border-radius: 3px 3px 3px 3px;
+}
+body {
+    font-size: 12px;
+    line-height: 1.5em;
+    font-family: Arial,Helvetica,sans-serif;
+    color: #333;
+}
+/*
+ul {
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, p, blockquote, th, td {
+    margin: 0;
+    padding: 0; 
+}
+
+ul, menu, dir {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+*/
+/*WHOSCORED  END*/
