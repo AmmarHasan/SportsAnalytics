@@ -1,6 +1,6 @@
 setwd(getwd())
-dashboardPage(
-  dashboardHeader(title = "Soccer Analytics"),
+dashboardPage(skin = "red",
+  dashboardHeader(title = div(tags$i(class="soccer-icon fa fa-futbol-o"),"Soccer Analytics")),
   dashboardSidebar(
     uiOutput("selectPlayer"),
     uiOutput("selectPlayerToCompare"),
@@ -17,15 +17,8 @@ dashboardPage(
       menuItem(
         "Players", tabName = "players",icon = icon("table"),
         menuSubItem("At A Glance", tabName = "pl_glance"),
-        menuSubItem("Attacking",tabName = "pl_attack"),
-        menuSubItem("Defensive", tabName = "pl_defense"),
         menuSubItem("Passing", tabName = "pl_pass"),
         menuSubItem("Compare", tabName = "pl_compare")
-      ),
-      menuItem(
-        "Matches", tabName = "matches",icon = icon("table"),
-        menuSubItem("By Team", tabName = "mt_team"),
-        menuSubItem("By Player",tabName = "mt_player")
       ),
       tags$hr(),
       
@@ -90,7 +83,8 @@ dashboardPage(
               offset = 1,
               box(
                 width = 12,status = "success",solidHeader = TRUE,title = "Dream Team",
-                uiOutput("dreamTeam")
+                # uiOutput("dreamTeam")
+                img(src="images/dreamTeam.png")
               )
             ))),
     tabItem(tabName = "tm_playerSummary",
@@ -134,15 +128,6 @@ dashboardPage(
                 )
               )
             )),
-    tabItem(tabName = "pl_attack",
-            fluidRow(column(
-              width = 5,offset = 3,
-              box(
-                width = 12,title = "Goals",solidHeader = TRUE,status = 'success',
-                collapsible = TRUE, collapsed = FALSE
-                # , plotlyOutput("passingPieChart")
-              )
-            ))),
     tabItem(tabName = "pl_pass",
             fluidRow(column(
               width = 5,
@@ -193,13 +178,6 @@ dashboardPage(
                   br(),
                   plotlyOutput("appearanceChartplayerB")
                 )
-              )
-            )),
-    tabItem(tabName = "mt_team",
-            fluidRow(
-              box(
-                class = "information", width = 12, status = "warning",solidHeader = TRUE,
-                title = "Authors", collapsible = T,collapsed = F
               )
             ))
   ))
